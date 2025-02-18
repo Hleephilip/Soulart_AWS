@@ -1,0 +1,31 @@
+train_dataset:
+  name: lidarhuman26M
+  root_dir: /dltraining/datasets/lidarhuman26M/
+  n_joints: 24
+  n_points: 256
+  n_frames: 21
+  mode: train
+  joint_coord_type: PST
+
+val_dataset:
+  name: lidarhuman26M
+  root_dir: /dltraining/datasets/lidarhuman26M/
+  n_joints: 24
+  n_points: 256
+  n_frames: 21
+  mode: val
+  joint_coord_type: PST
+
+exp:
+  title: movin_lidarhuman26m
+  path: /dltraining/checkpoints
+  seed: 0
+  batch_size: 64
+  epochs: 120
+  report_interval: 10
+  lr: 0.0001
+  resume_ckpt: None
+
+model:
+  in_chans: 9
+  out_chans: 64

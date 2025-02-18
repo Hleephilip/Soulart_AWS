@@ -1,0 +1,29 @@
+train_dataset:
+  name: LIPD
+  root_dir: /dltraining/datasets/LIPD/LIPD_train.pkl
+  n_joints: 24
+  n_points: 256
+  n_frames: 21
+  mode: train
+
+val_dataset:
+  name: LIPD
+  root_dir: /dltraining/datasets/LIPD/LIPD_test.pkl
+  n_joints: 24
+  n_points: 256
+  n_frames: 21
+  mode: val
+
+exp:
+  title: movin_LIPD
+  path: /dltraining/checkpoints
+  seed: 0
+  batch_size: 64
+  epochs: 120
+  report_interval: 10
+  lr: 0.0001
+  resume_ckpt: None
+
+model:
+  in_chans: 9
+  out_chans: 64
