@@ -185,10 +185,10 @@ class SoulartDataset(Dataset):
             subject_path = os.path.join(self.root_dir, subject)
             if os.path.isdir(subject_path):
                 motions = sorted(os.listdir(subject_path))
-                for motion in motions:
+                for motion in motions: 
                     sbj_motion_path = os.path.join(subject_path, motion)
                     if os.path.isdir(sbj_motion_path):
-                        curr_ply_path = os.path.join(sbj_motion_path, "point_clouds", self.device_num)
+                        curr_ply_path = os.path.join(sbj_motion_path, "point_cloud", self.device_num)
                         curr_imu_path = os.path.join(sbj_motion_path, "motion")
                         if os.path.isdir(curr_ply_path) and os.path.isdir(curr_imu_path):
                             frames = sorted(os.listdir(curr_ply_path))
