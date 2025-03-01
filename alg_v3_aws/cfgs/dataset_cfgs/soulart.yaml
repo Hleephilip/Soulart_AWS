@@ -15,7 +15,7 @@ val_dataset:
   mode: val
 
 exp:
-  title: ours_v5_soulart
+  title: ours_v3_soulart
   path: /efs/exp_log/
   seed: 0
   batch_size: 32
