@@ -1,0 +1,83 @@
+train_dataset:
+  name: LIPD
+  root_dir: /home/coder/project/DataA/LIPD/LIPD_train.pkl
+  n_joints: 24
+  n_points: 256
+  n_frames: 4
+  mode: train
+
+val_dataset:
+  name: LIPD
+  root_dir: /home/coder/project/DataA/LIPD/LIPD_test.pkl
+  n_joints: 24
+  n_points: 256
+  n_frames: 4
+  mode: val
+
+exp:
+  title: ours_v3_LIPD
+  path: ./exp_log/
+  seed: 0
+  batch_size: 32
+  epochs: 30
+  report_interval: 10
+  lr: 0.0001
+  resume_ckpt: None
+
+model:
+  num_sample_steps: 20
+  point_encoder:
+    point_bert: 
+      pretrained: None
+      trans_dim: 256
+      gcn_dim: 128
+      depth: 12
+      drop_path_rate: 0.1
+      cls_dim: 512
+      num_heads: 6
+      group_size: 16
+      num_group: 32
+      encoder_dims: 256
+    in_chans: 512
+    hid_chans: 256
+    out_chans: 64
+    temporal_pos_enc_type: original 
+    temporal_n_head: 8 
+    temporal_n_layer: 2
+    spatial_pos_enc_type: original
+    spatial_n_head: 8
+    spatial_n_layer: 2
+    pooling_mode: avg
+    drop_rate: 0.1
+
+  imu_encoder:
+    imu_chans: 9
+    temporal_chans: 128
+    out_chans: 64
+    n_head: 8
+    use_bn: True
+
+  x_denoiser:
+    n_joints: 24
+    imu_chans: 3
+    mlp: [64, 128, 128]
+    cond_in_chans: 128
+    n_head: 8
+    qkv_chans: 128
+    use_gcn: False
+    use_leaky: True
+    use_residual: False
+
+  r_denoiser:
+    n_joints: 24
+    imu_chans: 6
+    mlp: [64, 256, 256]
+    cond_in_chans: 192
+    n_head: 8
+    qkv_chans: 256
+    use_gcn: False
+    use_leaky: True
+    use_residual: True
+    x1_mapper:
+      in_chans: 3
+      out_chans: 64
