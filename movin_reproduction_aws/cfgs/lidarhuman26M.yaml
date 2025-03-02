@@ -1,0 +1,31 @@
+train_dataset:
+  name: lidarhuman26M
+  root_dir: /home/coder/project/DataA/lidarhuman26M/
+  n_joints: 24
+  n_points: 256
+  n_frames: 21
+  mode: train
+  joint_coord_type: PST_v2
+
+val_dataset:
+  name: lidarhuman26M
+  root_dir: /home/coder/project/DataA/lidarhuman26M/
+  n_joints: 24
+  n_points: 256
+  n_frames: 21
+  mode: val
+  joint_coord_type: PST_v2
+
+exp:
+  title: movin_lidarhuman26M_gcn_fix_not_rotating_root_to_world_frame
+  path: ./exp_log/
+  seed: 0
+  batch_size: 32
+  epochs: 120
+  report_interval: 50
+  lr: 0.0001
+  resume_ckpt: None
+
+model:
+  in_chans: 9
+  out_chans: 64
